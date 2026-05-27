@@ -27,10 +27,10 @@
         <div class="top-bar">
             <div class="currency-group">
                 <div class="currency-item coins-item">
-                    <img src="https://i.ibb.co/ZNk9CbP/coin.png" alt="coin" style="width:18px;height:18px;"> <span id="coinsDisplay">1000</span>
+                    <img src="https://i.ibb.co/XZ54RF8q/Grid-Art-20260413-101647643.png" alt="coin" style="width:18px;height:18px;"> <span id="coinsDisplay">1000</span>
                 </div>
                 <div class="currency-item crystal-item">
-                    <img src="https://i.ibb.co/yVHMqLZ/crystal.png" alt="crystal" style="width:18px;height:18px;"> <span id="crystalDisplay">0</span>
+                    <img src="https://i.ibb.co/VYFj1f0q/Grid-Art-20260413-101736239.png" alt="crystal" style="width:18px;height:18px;"> <span id="crystalDisplay">0</span>
                 </div>
             </div>
             <button class="acc-info-btn" id="accInfoBtn">
@@ -137,11 +137,11 @@
     <div style="padding: 20px 18px; background: rgba(10,15,30,0.98); height: 100%; overflow-y: auto;">
         <div class="select-header" style="margin-bottom: 20px;">
             <button class="back-btn" id="backFromGiftBtn"><i class="fas fa-arrow-left"></i></button>
-            <span>လက်ဆောင်စင်တာ</span>
+            <span>Gift Store</span>
         </div>
         <div style="display: flex; gap: 10px; margin-bottom: 20px; background: rgba(0,0,0,0.3); border-radius: 30px; padding: 4px;">
             <button id="sendGiftTabBtn" style="flex: 1; padding: 12px; border: none; border-radius: 26px; font-weight: 700; font-size: 15px; cursor: pointer; background: linear-gradient(135deg, #3b5de7, #5b8def); color: white;">
-                <i class="fas fa-paper-plane"></i> လက်ဆောင်ပေးမည်
+                <i class="fas fa-paper-plane"></i> Gift ပေးမည်
             </button>
             <button id="receivedGiftTabBtn" style="flex: 1; padding: 12px; border: none; border-radius: 26px; font-weight: 700; font-size: 15px; cursor: pointer; background: rgba(255,255,255,0.08); color: #8892b0;">
                 <i class="fas fa-gift"></i> ရရှိထားသည်များ
@@ -150,11 +150,11 @@
         <div id="sendGiftTab" style="display: block;">
             <!-- ဒီနေရာမှာ ID ထည့်တဲ့အတန်း မပါတော့ဘူး -->
             <div class="edit-section" style="margin-bottom: 20px;">
-                <h3><i class="fas fa-store"></i> လက်ဆောင်ပစ္စည်းများ</h3>
+                <h3><i class="fas fa-store"></i> Gifts</h3>
                 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;" id="giftItemsGrid"></div>
             </div>
             <div class="edit-section" id="selectedGiftPreview" style="display: none;">
-                <h3><i class="fas fa-check-circle"></i> ရွေးထားသောလက်ဆောင်</h3>
+                <h3><i class="fas fa-check-circle"></i> ရွေးထားသော Gift</h3>
                 <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: rgba(255,255,255,0.05); border-radius: 16px;">
                     <img id="previewGiftImg" src="" style="width: 50px; height: 50px; object-fit: contain;">
                     <div style="flex: 1;">
@@ -167,11 +167,11 @@
         </div>
         <div id="receivedGiftTab" style="display: none;">
             <div class="edit-section">
-                <h3><i class="fas fa-box-open"></i> ကျွန်ုပ်ရရှိထားသောလက်ဆောင်များ</h3>
+                <h3><i class="fas fa-box-open"></i> ရရှိထားသောGiftများ</h3>
                 <div id="receivedGiftsList" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px;"></div>
                 <div id="noGiftsMessage" style="text-align: center; padding: 40px; color: #8892b0; display: none;">
                     <i class="fas fa-gift" style="font-size: 48px; margin-bottom: 12px; opacity: 0.5;"></i>
-                    <p>လက်ဆောင်မရရှိသေးပါ</p>
+                    <p>Giftမရရှိသေးပါ</p>
                 </div>
             </div>
         </div>
@@ -678,12 +678,12 @@ body {
 
     // Gift Items Data - 6 items total (3 coin + 3 crystal)
     const GIFT_ITEMS = [
-        { id: 'coingift1', name: 'စိန်လက်ဆောင်', image: 'https://i.ibb.co/n7vM6Vz/diamond.png', price: 100, type: 'coin', sellPrice: 50 },
-        { id: 'coingift2', name: 'ရွှေအိတ်', image: 'https://i.ibb.co/4FYR2bz/gold.png', price: 50, type: 'coin', sellPrice: 25 },
-        { id: 'coingift3', name: 'နှင်းဆီပန်း', image: 'https://i.ibb.co/4R8GXH0/rose.png', price: 30, type: 'coin', sellPrice: 15 },
-        { id: 'crystalgift1', name: 'ကိတ်မုန့်', image: 'https://i.ibb.co/HXVp8qY/cake.png', price: 1, type: 'crystal', sellPrice: 0 },
-        { id: 'crystalgift2', name: 'အံဆွမ်း', image: 'https://i.ibb.co/L1vmDJJ/giftbox.png', price: 2, type: 'crystal', sellPrice: 1 },
-        { id: 'crystalgift3', name: 'ကြယ်စင်', image: 'https://i.ibb.co/jLqR7Z5/star.png', price: 3, type: 'crystal', sellPrice: 1 }
+        { id: 'coingift1', name: 'လက််‌ဆောင်ဘူး', image: 'https://i.ibb.co/Vcsw2YLZ/Grid-Art-20260527-195018960.png', price: 300, type: 'coin', sellPrice: 150 },
+        { id: 'coingift2', name: 'ကား', image: 'https://i.ibb.co/9H7g256Q/Grid-Art-20260527-195059531.png', price: 1000, type: 'coin', sellPrice: 500 },
+        { id: 'coingift3', name: 'Empty', image: 'https://i.ibb.co/4R8GXH0/rose.png', price: 99999, type: 'coin', sellPrice: 15 },
+        { id: 'crystalgift1', name: 'အသဲပုံကျွန်း', image: 'https://i.ibb.co/GfM0k3gw/Grid-Art-20260527-195137078.png', price: 10, type: 'crystal', sellPrice: 5 },
+        { id: 'crystalgift2', name: 'Empty', image: 'https://i.ibb.co/L1vmDJJ/giftbox.png', price: 99999, type: 'crystal', sellPrice: 1 },
+        { id: 'crystalgift3', name: 'Empty', image: 'https://i.ibb.co/jLqR7Z5/star.png', price: 99999, type: 'crystal', sellPrice: 1 }
     ];
 
     // ==================== LOCAL STORAGE KEYS ====================
