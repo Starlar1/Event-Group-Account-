@@ -922,7 +922,7 @@ body {
             if(owned)div.classList.add('owned');
             if(equipped)div.classList.add('equipped');
             if(selectedFrameId===frame.id)div.classList.add('selected');
-            div.innerHTML=`<img src="${frame.image}" onerror="this.style.display='none'"><span class="item-name">${frame.name}</span>${!owned?`<span class="item-price"><img src="https://i.ibb.co/ZNk9CbP/coin.png" style="width:14px;height:14px;"> ${frame.price}</span>`:''}${equipped?'<span class="equipped-badge">တပ်ထား</span>':''}${owned&&!equipped?'<span style="color:#4ade80;font-size:11px">Owned</span>':''}`;
+            div.innerHTML=`<img src="${frame.image}" onerror="this.style.display='none'"><span class="item-name">${frame.name}</span>${!owned?`<span class="item-price"><img src="https://i.ibb.co/XZ54RF8q/Grid-Art-20260413-101647643.png" style="width:14px;height:14px;"> ${frame.price}</span>`:''}${equipped?'<span class="equipped-badge">တပ်ထား</span>':''}${owned&&!equipped?'<span style="color:#4ade80;font-size:11px">Owned</span>':''}`;
             div.onclick=()=>{
                 document.querySelectorAll('#frameSelectGrid .select-item').forEach(e=>e.classList.remove('selected'));
                 div.classList.add('selected');selectedFrameId=frame.id;
@@ -1064,7 +1064,7 @@ body {
         const popup = document.createElement('div');
         popup.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:2000;';
         
-        const priceIcon = selectedGiftForSend.type === 'coin' ? '<img src="https://i.ibb.co/ZNk9CbP/coin.png" style="width:20px;height:20px;vertical-align:middle;">' : '<img src="https://i.ibb.co/yVHMqLZ/crystal.png" style="width:20px;height:20px;vertical-align:middle;">';
+        const priceIcon = selectedGiftForSend.type === 'coin' ? '<img src="https://i.ibb.co/XZ54RF8q/Grid-Art-20260413-101647643.png" style="width:20px;height:20px;vertical-align:middle;">' : '<img src="https://i.ibb.co/VYFj1f0q/Grid-Art-20260413-101736239.png" style="width:20px;height:20px;vertical-align:middle;">';
         
         popup.innerHTML = `
             <div style="background:#1a2035;border-radius:28px;padding:24px;width:90%;max-width:360px;max-height:85vh;overflow-y:auto;">
