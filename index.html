@@ -1527,24 +1527,28 @@ body {
     }
 
     if(sendBtn) {
-        sendBtn.onclick=async()=>{
-            if(!currentUsername){showToast("Open profile first");return;}
-            const link=groups[currentGroupKey],chatId=groupChatIds[currentGroupKey],threadId=groupMessageThreadIds[currentGroupKey];
-            try{
-                showLoading("Capturing...");
-                const canvas=await html2canvas(cardContainer,{backgroundColor:null,scale:2,allowTaint:false,useCORS:true,logging:false});
-                const blob=await new Promise(r=>canvas.toBlob(r,'image/png'));
-                if(loadingText) loadingText.textContent="Sending...";
-                const fd=new FormData();fd.append('chat_id',chatId);fd.append('message_thread_id',threadId);
-                fd.append('photo',blob,'card.png');
-                fd.append('caption',`🆔 ID: ${userAccId}\n🎟️ Invite: ${inviteCode}\n🖥️ Server: ${currentServerName}`);
-                const res=await fetch(`${API_BASE}/sendPhoto`,{method:'POST',body:fd});
-                const result=await res.json();hideLoading();
-                if(result.ok){showToast("Sent!");window.open(link,'_blank');}
-                else{showToast("Error: "+result.description);}
-            }catch(e){hideLoading();showToast("Connection error");}
-        };
-    }
+    sendBtn.onclick=async()=>{
+        if(!currentUsername){showToast("Open profile first");return;}
+        const link=groups[currentGroupKey],chatId=groupChatIds[currentGroupKey],threadId=groupMessageThreadIds[currentGroupKey];
+        try{
+            showLoading("Capturing...");
+            const canvas=await html2canvas(cardContainer,{backgroundColor:null,scale:2,allowTaint:false,useCORS:true,logging:false});
+            const blob=await new Promise(r=>canvas.toBlob(r,'image/png'));
+            if(loadingText) loadingText.textContent="Sending...";
+            const fd=new FormData();
+            fd.append('chat_id',chatId);
+            fd.append('message_thread_id',threadId);
+            fd.append('photo',blob,'card.png');
+            // caption မထည့်တော့ပါ - ပုံပဲပို့မယ်
+            // fd.append('caption', `🆔 ID: ${userAccId}\n🎟️ Invite: ${inviteCode}\n🖥️ Server: ${currentServerName}`);
+            
+            const res=await fetch(`${API_BASE}/sendPhoto`,{method:'POST',body:fd});
+            const result=await res.json();hideLoading();
+            if(result.ok){showToast("Sent!");window.open(link,'_blank');}
+            else{showToast("Error: "+result.description);}
+        }catch(e){hideLoading();showToast("Connection error");}
+    };
+}
 
     // ==================== INIT ====================
     updateAll();updateAccInfoScreen();
