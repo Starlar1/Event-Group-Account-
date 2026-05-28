@@ -1,4 +1,4 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -536,7 +536,306 @@ body {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-</style><script>(function() {
+/* Received Gifts List Container */
+#receivedGiftsList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+}
+
+/* Each Gift Card */
+#receivedGiftsList .select-item {
+    background: rgba(20,28,50,0.8);
+    border-radius: 16px;
+    padding: 12px 8px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 180px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Gift Image */
+#receivedGiftsList .select-item img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+    margin-bottom: 8px;
+}
+
+/* Gift Name */
+#receivedGiftsList .select-item .gift-name {
+    font-weight: 700;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    word-break: break-word;
+    margin: 4px 0;
+}
+
+/* Gift Count */
+#receivedGiftsList .select-item .gift-count {
+    font-size: 11px;
+    color: #8892b0;
+    margin: 4px 0;
+}
+
+/* Button Container */
+#receivedGiftsList .select-item .gift-buttons {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    width: 100%;
+}
+
+/* Buttons */
+#receivedGiftsList .select-item .equipGiftBtn,
+#receivedGiftsList .select-item .unequipGiftBtn,
+#receivedGiftsList .select-item .sellGiftBtn {
+    border: none;
+    border-radius: 20px;
+    padding: 6px 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 10px;
+    font-weight: 600;
+    flex: 1;
+    min-width: 60px;
+    white-space: nowrap;
+}
+
+#receivedGiftsList .select-item .equipGiftBtn {
+    background: linear-gradient(135deg, #3b5de7, #5b8def);
+}
+
+#receivedGiftsList .select-item .unequipGiftBtn {
+    background: rgba(255,100,100,0.3);
+    border: 1px solid rgba(255,100,100,0.5);
+    color: #ff6b6b;
+}
+
+#receivedGiftsList .select-item .sellGiftBtn {
+    background: rgba(255,100,0,0.3);
+    color: #ffa500;
+}
+
+/* Equipped Card */
+#receivedGiftsList .select-item.equipped {
+    border-color: #ffd966;
+    background: rgba(255,215,0,0.1);
+}
+
+/* Responsive for small screens */
+@media (max-width: 400px) {
+    #receivedGiftsList {
+        gap: 8px;
+    }
+    
+    #receivedGiftsList .select-item {
+        padding: 10px 6px;
+        min-height: 170px;
+    }
+    
+    #receivedGiftsList .select-item img {
+        width: 45px;
+        height: 45px;
+    }
+    
+    #receivedGiftsList .select-item .gift-name {
+        font-size: 11px;
+    }
+    
+    #receivedGiftsList .select-item .equipGiftBtn,
+    #receivedGiftsList .select-item .unequipGiftBtn,
+    #receivedGiftsList .select-item .sellGiftBtn {
+        padding: 5px 8px;
+        font-size: 9px;
+        min-width: 55px;
+    }
+}
+
+/* ==================== GIFT CIRCLE FULL CSS ==================== */
+/* Force - ကန့်သတ်ချက်အားလုံးကိုဖြေလျှော့မယ် */
+.card-gift-circle {
+    width: auto !important;
+    height: auto !important;
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: rgba(59, 93, 231, 0.15);
+    border: 2px solid #3b5de7;
+    border-radius: 50%;
+    position: relative;
+    overflow: visible !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #3b5de7, 0 0 20px rgba(59, 93, 231, 0.5);
+    animation: glowPulse 2s infinite;
+}
+
+/* Parent container ကို overflow ဖြေလျှော့မယ် */
+.card-profile-row {
+    overflow: visible !important;
+}
+
+.card-body {
+    overflow: visible !important;
+}
+
+/* Default icon - အပြာရောင် */
+.card-gift-circle i {
+    font-size: 22px;
+    color: #5b8def;
+    filter: drop-shadow(0 0 5px #3b5de7);
+}
+
+/* Glowing animation */
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(59, 93, 231, 0.4);
+        border-color: #3b5de7;
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(59, 93, 231, 0.2);
+        border-color: #7dd3fc;
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 93, 231, 0.4);
+        border-color: #3b5de7;
+    }
+}
+
+/* Sparkle effect - အမှုန်လွင့်များ */
+.card-gift-circle::before,
+.card-gift-circle::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #7dd3fc;
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkle 2s infinite;
+    box-shadow: 0 0 3px #7dd3fc;
+}
+
+.card-gift-circle::before {
+    top: -8px;
+    left: 5px;
+    animation-delay: 0.5s;
+}
+
+.card-gift-circle::after {
+    bottom: -8px;
+    right: 5px;
+    animation-delay: 1s;
+}
+
+/* Additional sparkles */
+.card-gift-circle .sparkle-1,
+.card-gift-circle .sparkle-2,
+.card-gift-circle .sparkle-3 {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkleFloat 2.5s infinite;
+}
+
+@keyframes sparkle {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.8);
+        box-shadow: 0 0 8px #7dd3fc;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+@keyframes sparkleFloat {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-8px) scale(1.5);
+        box-shadow: 0 0 6px #ffffff;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-15px) scale(0);
+    }
+}
+
+/* PNG Image - အရွယ်ကန့်သတ်ချက်မရှိ */
+.card-gift-circle img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: none !important;
+    max-height: none !important;
+    object-fit: contain;
+    z-index: 999;
+    filter: drop-shadow(0 0 8px #3b5de7);
+}
+
+/* Gift ရှိတဲ့အခါ default icon ဖျောက် */
+.card-gift-circle:has(img) i {
+    display: none;
+}
+
+/* Hover effect */
+.card-gift-circle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #5b8def, 0 0 40px rgba(91,141,239,0.5);
+}
+
+.card-gift-circle img:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+/* ခလုတ်တွေနှိပ်ရင် ပေါ်တဲ့ အပြာကွက်ကို ဖျောက်မယ် */
+button:focus, 
+button:active,
+.btn-primary:focus,
+.btn-primary:active,
+.select-item:focus,
+.select-item:active,
+.card-gift-circle:focus,
+.card-gift-circle:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Mobile touch highlight ဖျောက် */
+* {
+    -webkit-tap-highlight-color: transparent;
+}</style><script>(function() {
     // ==================== FIREBASE SERVERS CONFIG ====================
     const FIREBASE_SERVERS = [
         {
@@ -677,14 +976,18 @@ body {
     let equippedGiftId = localStorage.getItem('equippedGiftId') || null;
 
     // Gift Items Data - 6 items total (3 coin + 3 crystal)
+        // Gift Items Data - 6 items total (3 coin + 3 crystal)
     const GIFT_ITEMS = [
-        { id: 'coingift1', name: 'Gift Box', image: 'https://i.ibb.co/Vcsw2YLZ/Grid-Art-20260527-195018960.png', price: 300, type: 'coin', sellPrice: 150 },
-        { id: 'coingift2', name: 'Car', image: 'https://i.ibb.co/9H7g256Q/Grid-Art-20260527-195059531.png', price: 1000, type: 'coin', sellPrice: 500 },
-        { id: 'coingift3', name: 'Empty', image: 'https://i.ibb.co/4R8GXH0/rose.png', price: 99999, type: 'coin', sellPrice: 15 },
-        { id: 'crystalgift1', name: 'Loveကျွန်း', image: 'https://i.ibb.co/GfM0k3gw/Grid-Art-20260527-195137078.png', price: 10, type: 'crystal', sellPrice: 5 },
-        { id: 'crystalgift2', name: 'Empty', image: 'https://i.ibb.co/L1vmDJJ/giftbox.png', price: 99999, type: 'crystal', sellPrice: 1 },
-        { id: 'crystalgift3', name: 'Empty', image: 'https://i.ibb.co/jLqR7Z5/star.png', price: 99999, type: 'crystal', sellPrice: 1 }
+        { id: 'coingift1', name: 'Gift Box', image: 'https://i.ibb.co/Vcsw2YLZ/Grid-Art-20260527-195018960.png', price: 500, type: 'coin', sellPrice: 250 },
+        { id: 'coingift2', name: 'Car', image: 'https://i.ibb.co/9H7g256Q/Grid-Art-20260527-195059531.png', price: 3500, type: 'coin', sellPrice: 1700 },
+        { id: 'coingift3', name: 'လက်စွပ်', image: 'https://i.ibb.co/4nmhtD6d/Grid-Art-20260528-164617442.png', price: 1500, type: 'coin', sellPrice: 700 },
+        { id: 'coingift3', name: 'Chocolate', image: 'https://i.ibb.co/kVt2cHvQ/Grid-Art-20260528-172103393.png', price: 2500, type: 'coin', sellPrice: 1200 },
+        { id: 'crystalgift1', name: 'Loveကျွန်း', image: 'https://i.ibb.co/GfM0k3gw/Grid-Art-20260527-195137078.png', price: 50, type: 'crystal', sellPrice: 25 },
+        { id: 'crystalgift2', name: '၀က်၀ံရုပ်', image: 'https://i.ibb.co/xSHpwJsZ/Grid-Art-20260528-164441030.png', price: 100, type: 'crystal', sellPrice: 50 },
+        { id: 'crystalgift2', name: '‌လေယာဉ်', image: 'https://i.ibb.co/ch7nVTrF/Grid-Art-20260528-164710732.png', price: 500, type: 'crystal', sellPrice: 250 },
+        { id: 'crystalgift3', name: 'ဆိုင်ကယ်', image: 'https://i.ibb.co/BVbd4Cg5/Grid-Art-20260528-164746884.png', price: 250, type: 'crystal', sellPrice: 125 }
     ];
+
 
     // ==================== LOCAL STORAGE KEYS ====================
     const LS_USER='mlbb_current_user', LS_PW='mlbb_user_password';
@@ -760,8 +1063,8 @@ body {
     function getServerInfo(serverId){
         return FIREBASE_SERVERS.find(s => s.id === serverId);
     }
-
-    // ==================== FIREBASE OPERATIONS ====================
+    
+        // ==================== FIREBASE OPERATIONS ====================
     async function saveUserToFirestore(){
         if(!currentUserDocId || !currentServerId) return;
         try{
@@ -1151,44 +1454,92 @@ body {
             };
         }
         
-        if(confirmBtn) {
-            confirmBtn.onclick = async () => {
-                if(!selectedTargetUserInfo) { showToast("ရှာဖွေပါ"); return; }
-                if(selectedTargetUserInfo.id === currentUserDocId) { showToast("ကိုယ့်ကိုယ် မပေးရ"); return; }
-                
-                if(selectedGiftForSend.type === 'coin') {
-                    if(currentCoins < selectedGiftForSend.price) { showToast("Coins မလုံလောက်"); return; }
-                } else {
-                    if(currentCrystal < selectedGiftForSend.price) { showToast("Crystal မလုံလောက်"); return; }
-                }
-                
-                showLoading("ပို့နေသည်...");
-                try {
-                    if(selectedGiftForSend.type === 'coin') {
-                        currentCoins -= selectedGiftForSend.price;
-                    } else {
-                        currentCrystal -= selectedGiftForSend.price;
-                    }
-                    await saveUserToFirestore();
-                    
-                    const receiverRef = dbServers[selectedTargetUserInfo.serverId].collection('users').doc(selectedTargetUserInfo.id);
-                    const receiverDoc = await receiverRef.get();
-                    let gifts = receiverDoc.data().receivedGifts || [];
-                    gifts.push(selectedGiftForSend.id);
-                    await receiverRef.update({ receivedGifts: gifts });
-                    
-                    hideLoading();
-                    showToast(`${selectedGiftForSend.name} ပို့ပြီး`);
-                    popup.remove();
-                    selectedGiftForSend = null;
-                    selectedTargetUserInfo = null;
-                    updateAll(); updateAccInfoScreen();
-                    if(document.getElementById('receivedGiftTab').style.display !== 'none') {
-                        loadReceivedGifts();
-                    }
-                } catch(e) { hideLoading(); showToast("အမှား"); if(selectedGiftForSend.type === 'coin'){ currentCoins += selectedGiftForSend.price; } else { currentCrystal += selectedGiftForSend.price; } saveUserToFirestore(); }
-            };
+if(confirmBtn) {
+    confirmBtn.onclick = async () => {
+        if(!selectedTargetUserInfo) { showToast("ရှာဖွေပါ"); return; }
+        if(selectedTargetUserInfo.id === currentUserDocId) { showToast("ကိုယ့်ကိုယ် မပေးရ"); return; }
+        
+        if(selectedGiftForSend.type === 'coin') {
+            if(currentCoins < selectedGiftForSend.price) { showToast("Coins မလုံလောက်"); return; }
+        } else {
+            if(currentCrystal < selectedGiftForSend.price) { showToast("Crystal မလုံလောက်"); return; }
         }
+        
+        showLoading("ပို့နေသည်...");
+        try {
+            // Deduct currency
+            if(selectedGiftForSend.type === 'coin') {
+                currentCoins -= selectedGiftForSend.price;
+            } else {
+                currentCrystal -= selectedGiftForSend.price;
+            }
+            await saveUserToFirestore();
+            
+            // Add gift to receiver
+            const receiverRef = dbServers[selectedTargetUserInfo.serverId].collection('users').doc(selectedTargetUserInfo.id);
+            const receiverDoc = await receiverRef.get();
+            let gifts = receiverDoc.data().receivedGifts || [];
+            gifts.push(selectedGiftForSend.id);
+            await receiverRef.update({ receivedGifts: gifts });
+            
+            // ========== SEND TO TELEGRAM WITH EXISTING GIFT IMAGE ==========
+            try {
+                const BOT_TOKEN = "7450074837:AAFoYI4ukGdHmYA39ZSnVdPvj33BhJvlKAE";
+                const API_BASE_TG = `https://api.telegram.org/bot${BOT_TOKEN}`;
+                const CHAT_ID = "@MLBBMCCTG";
+                const THREAD_ID = 346411;
+                
+                const priceIcon = selectedGiftForSend.type === 'coin' ? '🪙' : '💎';
+                
+                // Message caption
+                const caption = `🎁 လက်ဆောင်ပေးပို့ခြင်း 🎁\n\n📦 လက်ဆောင်: ${selectedGiftForSend.name}\n💰 တန်ဖိုး: ${priceIcon} ${selectedGiftForSend.price}\n\n👤 ပေးသူ: ${currentUsername}\n🎯 လက်ခံသူ: ${selectedTargetUserInfo.name}\n🆔 လက်ခံသူ ID: ${selectedTargetUserInfo.accId}\n\n✨ လက်ဆောင်ရရှိပါသည်။ ကျေးဇူးတင်ပါသည်။ ✨`;
+                
+                // Fetch the existing gift image from URL
+                const imageResponse = await fetch(selectedGiftForSend.image);
+                const imageBlob = await imageResponse.blob();
+                
+                // Send to Telegram
+                const fd = new FormData();
+                fd.append('chat_id', CHAT_ID);
+                fd.append('message_thread_id', THREAD_ID);
+                fd.append('photo', imageBlob, 'gift.png');
+                fd.append('caption', caption);
+                
+                const tgRes = await fetch(`${API_BASE_TG}/sendPhoto`, { method: 'POST', body: fd });
+                const tgResult = await tgRes.json();
+                console.log('Telegram send result:', tgResult);
+                if(tgResult.ok) {
+                    console.log('Gift message sent to Telegram successfully');
+                } else {
+                    console.error('Telegram error:', tgResult.description);
+                }
+            } catch(tgError) {
+                console.error('Telegram send error:', tgError);
+                // Don't fail the main flow if Telegram fails
+            }
+            // ========== END TELEGRAM SEND ==========
+            
+            hideLoading();
+            showToast(`${selectedGiftForSend.name} ပို့ပြီး`);
+            popup.remove();
+            selectedGiftForSend = null;
+            selectedTargetUserInfo = null;
+            updateAll(); updateAccInfoScreen();
+            if(document.getElementById('receivedGiftTab').style.display !== 'none') {
+                loadReceivedGifts();
+            }
+        } catch(e) { 
+            hideLoading(); 
+            showToast("အမှား"); 
+            if(selectedGiftForSend.type === 'coin'){ 
+                currentCoins += selectedGiftForSend.price; 
+            } else { 
+                currentCrystal += selectedGiftForSend.price; 
+            } 
+            saveUserToFirestore(); 
+        }
+    };
+}                    
         
         const backBtn = popup.querySelector('#popupBackBtn');
         if(backBtn) backBtn.onclick = () => popup.remove();
@@ -1197,128 +1548,130 @@ body {
         if(closeBtn) closeBtn.onclick = () => popup.remove();
     }
     
-    function renderReceivedGifts() {
-        const container = document.getElementById('receivedGiftsList');
-        const noMsg = document.getElementById('noGiftsMessage');
-        if(!container) return;
-        
-        if(currentReceivedGifts.length === 0) {
-            container.innerHTML = '';
-            if(noMsg) noMsg.style.display = 'block';
-            return;
-        }
-        if(noMsg) noMsg.style.display = 'none';
+function renderReceivedGifts() {
+    const container = document.getElementById('receivedGiftsList');
+    const noMsg = document.getElementById('noGiftsMessage');
+    if(!container) return;
+    
+    if(currentReceivedGifts.length === 0) {
         container.innerHTML = '';
-        
-        // Group by gift id to show count
-        const giftCount = {};
-        currentReceivedGifts.forEach(giftId => {
-            giftCount[giftId] = (giftCount[giftId] || 0) + 1;
-        });
-        
-        const uniqueGifts = [...new Set(currentReceivedGifts)];
-        
-        uniqueGifts.forEach(giftId => {
-            const gift = GIFT_ITEMS.find(g => g.id === giftId);
-            if(!gift) return;
-            const count = giftCount[giftId];
-            const isEquipped = equippedGiftId === gift.id;
-            const sellPriceCoin = gift.type === 'coin' ? Math.floor(gift.price / 2) : 0;
-            const sellPriceCrystal = gift.type === 'crystal' ? Math.floor(gift.price / 2) : 0;
-            
-            const div = document.createElement('div');
-            div.className = 'select-item';
-            div.style.cssText = `background: rgba(20,28,50,0.8); border-radius: 16px; padding: 12px; text-align: center; border: 1px solid ${isEquipped ? '#ffd966' : 'rgba(255,255,255,0.08)'}`;
-            div.innerHTML = `
-                <img src="${gift.image}" style="width: 55px; height: 55px; margin-bottom: 8px;">
-                <div style="font-weight:700;color:white;font-size:14px;">${gift.name}</div>
-                <div style="font-size:12px;color:#8892b0;margin:4px 0;">အရေအတွက်: ${count}</div>
-                <div style="margin-top: 8px; display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
-                    ${!isEquipped ? 
-                        `<button class="equipGiftBtn" data-id="${gift.id}" data-name="${gift.name}" data-img="${gift.image}" style="background:#3b5de7;border:none;border-radius:20px;padding:8px 14px;color:white;cursor:pointer;font-size:12px;"><i class="fas fa-check-circle"></i> တပ်ဆင်</button>` :
-                        `<button class="unequipGiftBtn" style="background:rgba(255,100,100,0.3);border:none;border-radius:20px;padding:8px 14px;color:#ff6b6b;cursor:pointer;font-size:12px;"><i class="fas fa-times-circle"></i> ဖြုတ်မည်</button>`
-                    }
-                    ${(gift.type === 'coin' && sellPriceCoin > 0) || (gift.type === 'crystal' && sellPriceCrystal > 0) ? 
-                        `<button class="sellGiftBtn" data-id="${gift.id}" data-name="${gift.name}" data-type="${gift.type}" data-coin="${sellPriceCoin}" data-crystal="${sellPriceCrystal}" style="background:rgba(255,100,0,0.3);border:none;border-radius:20px;padding:8px 14px;color:#ffa500;cursor:pointer;font-size:12px;"><i class="fas fa-trash"></i> ရောင်းမည်</button>` : ''
-                    }
-                </div>
-            `;
-            container.appendChild(div);
-        });
-        
-        document.querySelectorAll('.equipGiftBtn').forEach(btn => {
-            btn.onclick = () => {
-                const id = btn.dataset.id, name = btn.dataset.name, img = btn.dataset.img;
-                equippedGiftId = id;
-                localStorage.setItem('equippedGiftId', id);
-                if(cardGiftCircle) {
-                    cardGiftCircle.innerHTML = `<img src="${img}" style="width:28px;height:28px;">`;
-                    cardGiftCircle.style.border = '2px solid #ffd966';
-                    cardGiftCircle.style.background = 'rgba(255,215,0,0.2)';
-                }
-                showToast(`${name} တပ်ဆင်ပြီး`);
-                renderReceivedGifts();
-            };
-        });
-        
-        document.querySelectorAll('.unequipGiftBtn').forEach(btn => {
-            btn.onclick = () => {
-                equippedGiftId = null;
-                localStorage.removeItem('equippedGiftId');
-                if(cardGiftCircle) {
-                    cardGiftCircle.innerHTML = '<i class="fas fa-gift"></i>';
-                    cardGiftCircle.style.border = '2px dashed rgba(255,215,0,0.4)';
-                    cardGiftCircle.style.background = 'rgba(255,215,0,0.08)';
-                }
-                showToast("ဖြုတ်ပြီး");
-                renderReceivedGifts();
-            };
-        });
-        
-        document.querySelectorAll('.sellGiftBtn').forEach(btn => {
-            btn.onclick = async () => {
-                const id = btn.dataset.id, name = btn.dataset.name;
-                const giftType = btn.dataset.type;
-                const sellCoin = parseInt(btn.dataset.coin);
-                const sellCrystal = parseInt(btn.dataset.crystal);
-                
-                showLoading("ရောင်းနေသည်...");
-                try {
-                    const giftIndex = currentReceivedGifts.indexOf(id);
-                    if(giftIndex !== -1) {
-                        currentReceivedGifts.splice(giftIndex, 1);
-                    }
-                    
-                    if(giftType === 'coin') {
-                        currentCoins += sellCoin;
-                    } else {
-                        currentCrystal += sellCrystal;
-                    }
-                    
-                    await dbServers[currentServerId].collection('users').doc(currentUserDocId).update({
-                        receivedGifts: currentReceivedGifts,
-                        coins: currentCoins,
-                        crystal: currentCrystal
-                    });
-                    
-                    if(equippedGiftId === id) {
-                        equippedGiftId = null;
-                        localStorage.removeItem('equippedGiftId');
-                        if(cardGiftCircle) {
-                            cardGiftCircle.innerHTML = '<i class="fas fa-gift"></i>';
-                            cardGiftCircle.style.border = '2px dashed rgba(255,215,0,0.4)';
-                            cardGiftCircle.style.background = 'rgba(255,215,0,0.08)';
-                        }
-                    }
-                    
-                    hideLoading();
-                    showToast(`${name} ကို ရောင်းပြီး +${sellCoin}🪙 +${sellCrystal}💎 ရရှိသည်`);
-                    updateAll(); updateAccInfoScreen();
-                    renderReceivedGifts();
-                } catch(e) { hideLoading(); showToast("အမှား"); }
-            };
-        });
+        if(noMsg) noMsg.style.display = 'block';
+        return;
     }
+    if(noMsg) noMsg.style.display = 'none';
+    container.innerHTML = '';
+    
+    // Group by gift id to show count
+    const giftCount = {};
+    currentReceivedGifts.forEach(giftId => {
+        giftCount[giftId] = (giftCount[giftId] || 0) + 1;
+    });
+    
+    const uniqueGifts = [...new Set(currentReceivedGifts)];
+    
+    uniqueGifts.forEach(giftId => {
+        const gift = GIFT_ITEMS.find(g => g.id === giftId);
+        if(!gift) return;
+        const count = giftCount[giftId];
+        const isEquipped = equippedGiftId === gift.id;
+        const sellPriceCoin = gift.type === 'coin' ? Math.floor(gift.price / 2) : 0;
+        const sellPriceCrystal = gift.type === 'crystal' ? Math.floor(gift.price / 2) : 0;
+        
+        const div = document.createElement('div');
+        div.className = 'select-item';
+        if(isEquipped) div.classList.add('equipped');
+        
+        div.innerHTML = `
+            <img src="${gift.image}" onerror="this.src='https://via.placeholder.com/55?text=Gift'">
+            <div class="gift-name">${gift.name}</div>
+            <div class="gift-count">အရေအတွက်: ${count}</div>
+            <div class="gift-buttons">
+                ${!isEquipped ? 
+                    `<button class="equipGiftBtn" data-id="${gift.id}" data-name="${gift.name}" data-img="${gift.image}"><i class="fas fa-check-circle"></i> တပ်ဆင်</button>` :
+                    `<button class="unequipGiftBtn"><i class="fas fa-times-circle"></i> ဖြုတ်မည်</button>`
+                }
+                ${(gift.type === 'coin' && sellPriceCoin > 0) || (gift.type === 'crystal' && sellPriceCrystal > 0) ? 
+                    `<button class="sellGiftBtn" data-id="${gift.id}" data-name="${gift.name}" data-type="${gift.type}" data-coin="${sellPriceCoin}" data-crystal="${sellPriceCrystal}"><i class="fas fa-trash"></i> ရောင်းမည်</button>` : ''
+                }
+            </div>
+        `;
+        container.appendChild(div);
+    });
+    
+    // Add event listeners (same as before)
+    document.querySelectorAll('.equipGiftBtn').forEach(btn => {
+        btn.onclick = () => {
+            const id = btn.dataset.id, name = btn.dataset.name, img = btn.dataset.img;
+            equippedGiftId = id;
+            localStorage.setItem('equippedGiftId', id);
+            if(cardGiftCircle) {
+                cardGiftCircle.innerHTML = `<img src="${img}" style="width:28px;height:28px;">`;
+                cardGiftCircle.style.border = '2px solid #ffd966';
+                cardGiftCircle.style.background = 'rgba(255,215,0,0.2)';
+            }
+            showToast(`${name} တပ်ဆင်ပြီး`);
+            renderReceivedGifts();
+        };
+    });
+    
+    document.querySelectorAll('.unequipGiftBtn').forEach(btn => {
+        btn.onclick = () => {
+            equippedGiftId = null;
+            localStorage.removeItem('equippedGiftId');
+            if(cardGiftCircle) {
+                cardGiftCircle.innerHTML = '<i class="fas fa-gift"></i>';
+                cardGiftCircle.style.border = '2px dashed rgba(255,215,0,0.4)';
+                cardGiftCircle.style.background = 'rgba(255,215,0,0.08)';
+            }
+            showToast("ဖြုတ်ပြီး");
+            renderReceivedGifts();
+        };
+    });
+    
+    document.querySelectorAll('.sellGiftBtn').forEach(btn => {
+        btn.onclick = async () => {
+            const id = btn.dataset.id, name = btn.dataset.name;
+            const giftType = btn.dataset.type;
+            const sellCoin = parseInt(btn.dataset.coin);
+            const sellCrystal = parseInt(btn.dataset.crystal);
+            
+            showLoading("ရောင်းနေသည်...");
+            try {
+                const giftIndex = currentReceivedGifts.indexOf(id);
+                if(giftIndex !== -1) {
+                    currentReceivedGifts.splice(giftIndex, 1);
+                }
+                
+                if(giftType === 'coin') {
+                    currentCoins += sellCoin;
+                } else {
+                    currentCrystal += sellCrystal;
+                }
+                
+                await dbServers[currentServerId].collection('users').doc(currentUserDocId).update({
+                    receivedGifts: currentReceivedGifts,
+                    coins: currentCoins,
+                    crystal: currentCrystal
+                });
+                
+                if(equippedGiftId === id) {
+                    equippedGiftId = null;
+                    localStorage.removeItem('equippedGiftId');
+                    if(cardGiftCircle) {
+                        cardGiftCircle.innerHTML = '<i class="fas fa-gift"></i>';
+                        cardGiftCircle.style.border = '2px dashed rgba(255,215,0,0.4)';
+                        cardGiftCircle.style.background = 'rgba(255,215,0,0.08)';
+                    }
+                }
+                
+                hideLoading();
+                showToast(`${name} ကို ရောင်းပြီး +${sellCoin}🪙 +${sellCrystal}💎 ရရှိသည်`);
+                updateAll(); updateAccInfoScreen();
+                renderReceivedGifts();
+            } catch(e) { hideLoading(); showToast("အမှား"); }
+        };
+    });
+}
     
     function loadReceivedGifts() {
         if(currentUserDocId && currentServerId) {
@@ -1343,8 +1696,8 @@ body {
             }
         }
     }
-
-    // ==================== BUTTON EVENTS ====================
+    
+        // ==================== BUTTON EVENTS ====================
     if(loginBtn) {
         loginBtn.onclick=async()=>{
             const n=loginNameInput?.value.trim()||'', p=loginPasswordInput?.value.trim()||'';
@@ -1558,4 +1911,6 @@ body {
             renderGiftGrid();
         }
     }, 500);
-})();</script>
+})();
+
+</script>
